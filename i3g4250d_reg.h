@@ -729,14 +729,14 @@ int32_t i3g4250d_int_on_threshold_mode_get(const stmdev_ctx_t *ctx,
 int32_t i3g4250d_int_on_threshold_src_get(const stmdev_ctx_t *ctx,
                                           i3g4250d_int1_src_t *val);
 
-int32_t i3g4250d_int_x_treshold_set(const stmdev_ctx_t *ctx, uint16_t val);
-int32_t i3g4250d_int_x_treshold_get(const stmdev_ctx_t *ctx, uint16_t *val);
+int32_t i3g4250d_int_x_threshold_set(const stmdev_ctx_t *ctx, uint16_t val);
+int32_t i3g4250d_int_x_threshold_get(const stmdev_ctx_t *ctx, uint16_t *val);
 
-int32_t i3g4250d_int_y_treshold_set(const stmdev_ctx_t *ctx, uint16_t val);
-int32_t i3g4250d_int_y_treshold_get(const stmdev_ctx_t *ctx, uint16_t *val);
+int32_t i3g4250d_int_y_threshold_set(const stmdev_ctx_t *ctx, uint16_t val);
+int32_t i3g4250d_int_y_threshold_get(const stmdev_ctx_t *ctx, uint16_t *val);
 
-int32_t i3g4250d_int_z_treshold_set(const stmdev_ctx_t *ctx, uint16_t val);
-int32_t i3g4250d_int_z_treshold_get(const stmdev_ctx_t *ctx, uint16_t *val);
+int32_t i3g4250d_int_z_threshold_set(const stmdev_ctx_t *ctx, uint16_t val);
+int32_t i3g4250d_int_z_threshold_get(const stmdev_ctx_t *ctx, uint16_t *val);
 
 int32_t i3g4250d_int_on_threshold_dur_set(const stmdev_ctx_t *ctx,
                                           uint8_t val);
