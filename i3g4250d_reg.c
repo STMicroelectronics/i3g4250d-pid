@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -326,7 +325,7 @@ int32_t i3g4250d_temperature_raw_get(const stmdev_ctx_t *ctx, uint8_t *buff)
 
 /**
   * @brief  Angular rate sensor. The value is expressed as a 16-bit word in
-  *         two’s complement.[get]
+  *         two's complement.[get]
   *
   * @param  ctx    Read / write interface definitions.(ptr)
   * @param  buff   Buffer that stores the data read.(ptr)
@@ -2005,5 +2004,3 @@ int32_t i3g4250d_fifo_wtm_flag_get(const stmdev_ctx_t *ctx, uint8_t *val)
   * @}
   *
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
