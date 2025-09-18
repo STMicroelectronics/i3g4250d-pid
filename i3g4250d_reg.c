@@ -158,6 +158,7 @@ int32_t i3g4250d_data_rate_get(const stmdev_ctx_t *ctx, i3g4250d_dr_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG1,
                           (uint8_t *)&ctrl_reg1, 1);
+  if (ret != 0) { return ret; }
 
   switch ((ctrl_reg1.dr  << 4) + ctrl_reg1.pd)
   {
@@ -234,6 +235,7 @@ int32_t i3g4250d_full_scale_get(const stmdev_ctx_t *ctx, i3g4250d_fs_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG4,
                           (uint8_t *)&ctrl_reg4, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg4.fs)
   {
@@ -290,6 +292,8 @@ int32_t i3g4250d_flag_data_ready_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_STATUS_REG,
                           (uint8_t *)&status_reg, 1);
+  if (ret != 0) { return ret; }
+
   *val = status_reg.zyxda;
 
   return ret;
@@ -338,6 +342,8 @@ int32_t i3g4250d_angular_rate_raw_get(const stmdev_ctx_t *ctx, int16_t *val)
   int32_t ret;
 
   ret =  i3g4250d_read_reg(ctx, I3G4250D_OUT_X_L, buff, 6);
+  if (ret != 0) { return ret; }
+
   val[0] = (int16_t)buff[1];
   val[0] = (val[0] * 256) + (int16_t)buff[0];
   val[1] = (int16_t)buff[3];
@@ -418,6 +424,7 @@ int32_t i3g4250d_self_test_get(const stmdev_ctx_t *ctx, i3g4250d_st_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG4,
                           (uint8_t *)&ctrl_reg4, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg4.st)
   {
@@ -484,6 +491,7 @@ int32_t i3g4250d_data_format_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG4,
                           (uint8_t *)&ctrl_reg4, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg4.ble)
   {
@@ -544,6 +552,8 @@ int32_t i3g4250d_boot_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG5,
                           (uint8_t *)&ctrl_reg5, 1);
+  if (ret != 0) { return ret; }
+
   *val = ctrl_reg5.boot;
 
   return ret;
@@ -605,6 +615,7 @@ int32_t i3g4250d_lp_bandwidth_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG1,
                           (uint8_t *)&ctrl_reg1, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg1.bw)
   {
@@ -675,6 +686,7 @@ int32_t i3g4250d_hp_bandwidth_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG2,
                           (uint8_t *)&ctrl_reg2, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg2.hpcf)
   {
@@ -767,6 +779,7 @@ int32_t i3g4250d_hp_mode_get(const stmdev_ctx_t *ctx, i3g4250d_hpm_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG2,
                           (uint8_t *)&ctrl_reg2, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg2.hpm)
   {
@@ -838,6 +851,7 @@ int32_t i3g4250d_filter_path_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG5,
                           (uint8_t *)&ctrl_reg5, 1);
+  if (ret != 0) { return ret; }
 
   switch ((ctrl_reg5.hpen << 2) + ctrl_reg5.out_sel)
   {
@@ -909,6 +923,7 @@ int32_t i3g4250d_filter_path_internal_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG5,
                           (uint8_t *)&ctrl_reg5, 1);
+  if (ret != 0) { return ret; }
 
   switch ((ctrl_reg5.hpen << 2) + ctrl_reg5.int1_sel)
   {
@@ -979,6 +994,8 @@ int32_t i3g4250d_hp_reference_value_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_REFERENCE,
                           (uint8_t *)&reference, 1);
+  if (ret != 0) { return ret; }
+
   *val = reference.ref;
 
   return ret;
@@ -1038,6 +1055,7 @@ int32_t i3g4250d_spi_mode_get(const stmdev_ctx_t *ctx, i3g4250d_sim_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG4,
                           (uint8_t *)&ctrl_reg4, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg4.sim)
   {
@@ -1115,6 +1133,8 @@ int32_t i3g4250d_pin_int1_route_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG3,
                           (uint8_t *)&ctrl_reg3, 1);
+  if (ret != 0) { return ret; }
+
   val->i1_int1       = ctrl_reg3.i1_int1;
   val->i1_boot       = ctrl_reg3.i1_boot;
 
@@ -1166,6 +1186,8 @@ int32_t i3g4250d_pin_int2_route_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG3,
                           (uint8_t *)&ctrl_reg3, 1);
+  if (ret != 0) { return ret; }
+
   val->i2_empty       = ctrl_reg3.i2_empty;
   val->i2_orun        = ctrl_reg3.i2_orun;
   val->i2_wtm         = ctrl_reg3.i2_wtm;
@@ -1216,6 +1238,7 @@ int32_t i3g4250d_pin_mode_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG3,
                           (uint8_t *)&ctrl_reg3, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg3.pp_od)
   {
@@ -1278,6 +1301,7 @@ int32_t i3g4250d_pin_polarity_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG3,
                           (uint8_t *)&ctrl_reg3, 1);
+  if (ret != 0) { return ret; }
 
   switch (ctrl_reg3.h_lactive)
   {
@@ -1337,6 +1361,7 @@ int32_t i3g4250d_int_notification_get(const stmdev_ctx_t *ctx,
   int32_t ret;
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_INT1_CFG, (uint8_t *)&int1_cfg, 1);
+  if (ret != 0) { return ret; }
 
   switch (int1_cfg.lir)
   {
@@ -1444,6 +1469,7 @@ int32_t i3g4250d_int_on_threshold_mode_get(const stmdev_ctx_t *ctx,
   int32_t ret;
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_INT1_CFG, (uint8_t *)&int1_cfg, 1);
+  if (ret != 0) { return ret; }
 
   switch (int1_cfg.and_or)
   {
@@ -1542,6 +1568,8 @@ int32_t i3g4250d_int_x_threshold_get(const stmdev_ctx_t *ctx, uint16_t *val)
   {
     ret = i3g4250d_read_reg(ctx, I3G4250D_INT1_TSH_XL,
                             (uint8_t *)&int1_tsh_xl, 1);
+    if (ret != 0) { return ret; }
+
     *val = int1_tsh_xh.thsx;
     *val = *val * 256U;
     *val +=  int1_tsh_xl.thsx;
@@ -1611,6 +1639,8 @@ int32_t i3g4250d_int_y_threshold_get(const stmdev_ctx_t *ctx, uint16_t *val)
   {
     ret = i3g4250d_read_reg(ctx, I3G4250D_INT1_TSH_YL,
                             (uint8_t *)&int1_tsh_yl, 1);
+    if (ret != 0) { return ret; }
+
     *val = int1_tsh_yh.thsy;
     *val = *val * 256U;
     *val += int1_tsh_yl.thsy;
@@ -1680,6 +1710,8 @@ int32_t i3g4250d_int_z_threshold_get(const stmdev_ctx_t *ctx, uint16_t *val)
   {
     ret = i3g4250d_read_reg(ctx, I3G4250D_INT1_TSH_ZL,
                             (uint8_t *)&int1_tsh_zl, 1);
+    if (ret != 0) { return ret; }
+
     *val = int1_tsh_zh.thsz;
     *val = *val * 256U;
     *val += int1_tsh_zl.thsz;
@@ -1742,6 +1774,8 @@ int32_t i3g4250d_int_on_threshold_dur_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_INT1_DURATION,
                           (uint8_t *)&int1_duration, 1);
+  if (ret != 0) { return ret; }
+
   *val = int1_duration.d;
 
   return ret;
@@ -1800,6 +1834,8 @@ int32_t i3g4250d_fifo_enable_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_CTRL_REG5,
                           (uint8_t *)&ctrl_reg5, 1);
+  if (ret != 0) { return ret; }
+
   *val = ctrl_reg5.fifo_en;
 
   return ret;
@@ -1846,6 +1882,8 @@ int32_t i3g4250d_fifo_watermark_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_FIFO_CTRL_REG,
                           (uint8_t *)&fifo_ctrl_reg, 1);
+  if (ret != 0) { return ret; }
+
   *val = fifo_ctrl_reg.wtm;
 
   return ret;
@@ -1894,6 +1932,7 @@ int32_t i3g4250d_fifo_mode_get(const stmdev_ctx_t *ctx,
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_FIFO_CTRL_REG,
                           (uint8_t *)&fifo_ctrl_reg, 1);
+  if (ret != 0) { return ret; }
 
   switch (fifo_ctrl_reg.fm)
   {
@@ -1932,6 +1971,8 @@ int32_t i3g4250d_fifo_data_level_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_FIFO_SRC_REG,
                           (uint8_t *)&fifo_src_reg, 1);
+  if (ret != 0) { return ret; }
+
   *val = fifo_src_reg.fss;
 
   return ret;
@@ -1952,6 +1993,8 @@ int32_t i3g4250d_fifo_empty_flag_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_FIFO_SRC_REG,
                           (uint8_t *)&fifo_src_reg, 1);
+  if (ret != 0) { return ret; }
+
   *val = fifo_src_reg.empty;
 
   return ret;
@@ -1972,6 +2015,8 @@ int32_t i3g4250d_fifo_ovr_flag_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_FIFO_SRC_REG,
                           (uint8_t *)&fifo_src_reg, 1);
+  if (ret != 0) { return ret; }
+
   *val = fifo_src_reg.ovrn;
 
   return ret;
@@ -1995,6 +2040,8 @@ int32_t i3g4250d_fifo_wtm_flag_get(const stmdev_ctx_t *ctx, uint8_t *val)
 
   ret = i3g4250d_read_reg(ctx, I3G4250D_FIFO_SRC_REG,
                           (uint8_t *)&fifo_src_reg, 1);
+  if (ret != 0) { return ret; }
+
   *val = fifo_src_reg.wtm;
 
   return ret;
